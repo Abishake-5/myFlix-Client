@@ -1,0 +1,1 @@
+{"mappings":";ACAA;EACE;;ACCF;EACE,OAHM","sources":["src/components/movie-card/movie-card.scss","src/components/movie-view/movie-view.scss","src/index.scss"],"sourcesContent":[null,"img {\r\n  width: 500px;\r\n}\r\n","$color: steelblue;\r\n\r\n.my-flix {\r\n  color: $color;\r\n}\r\n"],"names":[],"version":3,"file":"index.e3f97e84.css.map","sourceRoot":"/__parcel_source_root/"}
