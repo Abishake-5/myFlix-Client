@@ -1,47 +1,63 @@
 import React, { useState } from 'react';
-// Login stylesheet
-import './login-view.scss';
-
+import PropTypes from 'prop-types';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import './login-view.scss'
 
 export function LoginView(props) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(e)
         console.log(username, password);
         /* Send a request to the server for authentication */
         /* then call props.onLoggedIn(username) */
         props.onLoggedIn(username);
     };
+  return (
+    <div className='login-view'>
+    <div >
+      <h1 className="logo">MY-FLIX</h1>
+    </div>
+    <Form>
+      <h1>Sign in</h1>
+    <Form.Group controlId="formUsername">
+      <Form.Label>Username:</Form.Label>
+      <Form.Control placeholder='Email or phone number' type="text" onChange={e => setUsername(e.target.value)} />
+    </Form.Group>
 
-    return (
-
-        < div className="main" >
-
-            <div className="login">
-                <form>
-                    <label htmlFor="chk" aria-hidden="true">MyFlix</label>
-                    <input type="text" name="txt" placeholder="User name" value={username} onChange={e => setUsername(e.target.value)} required="" />
-                    <input type="password" name="pswd" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required="" />
-                    <button type="submit" onClick={handleSubmit}>Login</button>
-                </form>
-            </div>
-          <div className="signup">
-                <form>
-                    <label htmlFor="chk" aria-hidden="true">Sign up</label>
-                    <input type="text" name="txt" placeholder="User name" value={username} onChange={e => setUsername(e.target.value)} required="" />
-                    <input type="email" name="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required=""></input>
-                    <input type="password" name="pswd" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required="" />
-                    <input type="date" name="dateofbirth" placeholder="mm/dd/yy" id="dateofbirth" />
-
-
-                    <button type="submit" onClick={handleSubmit}>Sign up</button>
-                </form>
-            </div>
-        </div>  
-       
-
-    );
+    <Form.Group controlId="formPassword">
+      <Form.Label>Password:</Form.Label>
+      <Form.Control placeholder='Password' type="password" onChange={e => setPassword(e.target.value)} />
+    </Form.Group>
+    <Button id="login-button" variant="primary" type="submit" onClick={handleSubmit}>
+      Sign In
+    </Button>
+    <p className='signUP'>Need to create an account?<span><a href='#'> Sign up now</a></span></p>
+    <p className='bot'>This page is protected by Google ReCAPTCHA to ensure you'r not a bot <a href='#'>Learn more</a></p>
+  </Form>
+    <div className='footer'><br />
+<p>Question? <a href='#'>call 1-123-456-7890</a></p>
+<a href='#' className='grid1'>FQA</a>
+<a href='#' className='grid1'>Cookie Preferences</a>
+<a href='#' className='grid1'>Help Center</a>
+<a href='#'className='grid2'>Coporate information</a>
+<a href='#' className='grid2'>terms of Use</a>
+<a href='#' className='grid2'>Privacy</a>
+<select name="Language" id="language">
+<option value ='English'>English</option>  
+<option value='Espanol'>Espanol</option>
+</select>
+    </div>
+    </div>
+  );
 }
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }),
+  onLoggedIn: PropTypes.func.isRequired
+};
