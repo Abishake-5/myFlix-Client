@@ -1,30 +1,60 @@
-import React from 'react';
-// Movie view stylesheet
-import './movie-view.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import { DirectorView } from "../director-view/director-view";
+
+import "./movie-view.scss"
+
+import { Card, Col, Container, Row, Button } from "react-bootstrap";
+import { DirectorView } from "../director-view/director-view";
 
 export class MovieView extends React.Component {
-    //render movie view
+
+
     render() {
         const { movie, onBackClick } = this.props;
         return (
-            <div className="movie" >
-                <div>
-                    <img src={movie.ImagePath} crossOrigin="anonymous" className='image' />
-                </div >
-                <div className="title">
-                    <span className="label">Title: </span>
-                    <span className="value">{movie.Title}</span>
-                </div>
-                <div className="description">
-                    <span className="label">Description: </span>
-                    <span className="value">{movie.Description}</span>
-                </div>
-                <div className="genre">
-                    <span className="label">Genre: </span>
-                    <span className="value">{movie.Genre.Name}</span>
-                </div>
-                <button onClick={() =>{onBackClick(null)}}>Back</button>
-            </div>
-        )
+            <Container>
+                <Row>
+                    <Col>
+                        <Card id="movie-view">
+                            <Card.Body>
+                            <Card.Img id="movie-view-image" variant="top" src={movie.ImagePath} />
+                            <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
+                            <Card.Text id="movie-description" className="movie-description">
+                                {movie.Description}</Card.Text>
+                            
+                            <Card.Text id="movie-director" className="movie-director">
+                                Director: {movie.Director.Name}</Card.Text>
+                        
+                            <Card.Text id="movie-genre" className="movie-gerne">
+                                Genre: {movie.Genre.Name}</Card.Text>
+                        
+
+                            
+                            </Card.Body>
+                        </Card>
+                        <Button id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button>
+                        <Button id="movie-view-button" onClick={() => {}}>Add to favorites</Button>
+                    </Col>
+                </Row>
+            </Container>
+        );
     }
+}
+MovieView.propTypes = {
+    movie: PropTypes.shape({
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        Genre: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Description: PropTypes.string.isRequired
+        }),
+        Director: PropTypes.shape({
+            Name: PropTypes.string.isRequired,
+            Bio: PropTypes.string,
+            BirthDay: PropTypes.string,
+        }),
+        Actors: PropTypes.array,
+        ImagePath: PropTypes.string.isRequired
+    }).isRequired
 };

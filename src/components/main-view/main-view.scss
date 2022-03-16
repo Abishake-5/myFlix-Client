@@ -1,0 +1,17 @@
+nav {
+  height: 7vh;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    li {
+      font-size: 20px;
+      margin-left: 3%;
+    }
+    li:hover {
+      cursor: pointer;
+    }
+  }
+}

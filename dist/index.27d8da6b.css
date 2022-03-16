@@ -101,8 +101,6 @@ form .bot {
 
 .movie-card:hover {
   cursor: pointer;
-  transform: scaleY(1.1);
-  transform-origin: bottom right 60px;
 }
 .movie .image {
   width: 400px;
@@ -113,6 +111,23 @@ form .bot {
 }
 .movie .description .label {
   font-weight: bold;
+}
+
+nav {
+  height: 7vh;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+nav ul li {
+  font-size: 20px;
+  margin-left: 3%;
+}
+nav ul li:hover {
+  cursor: pointer;
 }
 .my-flix {
   color: steelblue;

@@ -8,14 +8,22 @@ import './login-view.scss'
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e)
-        console.log(username, password);
-        /* Send a request to the server for authentication */
-        /* then call props.onLoggedIn(username) */
-        props.onLoggedIn(username);
-    };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  /* Send a request to the server for authentication */
+  axios.post('https://nameless-bayou-89739.herokuapp.com/login', {
+    userName: username,
+    Password: password
+  })
+  .then(response => {
+    const data = response.data;
+    props.onLoggedIn(data);
+  })
+  .catch(e => {
+    console.log('no such user')
+  });
+};
+
   return (
     <div className='login-view'>
     <div >
