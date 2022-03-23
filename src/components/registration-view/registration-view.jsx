@@ -49,7 +49,7 @@ export function RegistrationView(props) {
         e.preventDefault();
         const isReq = validate();
         if(isReq) {
-            /* Send request to the server for authentication */
+    
             axios.post('https://nameless-bayou-89739.herokuapp.com/users', {
                 userName: username,
                 Password: password,
@@ -81,21 +81,18 @@ export function RegistrationView(props) {
                                     <Form.Group className="mb-3">
                                         <Form.Label>Username:</Form.Label>
                                         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter username" />
-                                        {/* code added here to display validation error */}
                                         {usernameErr && <p>{usernameErr}</p>}
                                     </Form.Group>
 
                                     <Form.Group className="mb-3">
                                         <Form.Label>Password:</Form.Label>
                                         <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} minLength="8" placeholder="Your password must be 8 or more characters" />
-                                        {/* code added here to display validation error */}
                                         {passwordErr && <p>{passwordErr}</p>}
                                     </Form.Group>
 
                                     <Form.Group className="mb-3">
                                         <Form.Label>Email:</Form.Label>
                                         <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter email" />
-                                        {/* code added here to display validation error */}
                                         {emailErr && <p>{emailErr}</p>}
                                     </Form.Group>
 
@@ -114,7 +111,6 @@ export function RegistrationView(props) {
         </Container>
     );
 }
-
 RegistrationView.propTypes = {
     register: PropTypes.shape({
         userName: PropTypes.string.isRequired,

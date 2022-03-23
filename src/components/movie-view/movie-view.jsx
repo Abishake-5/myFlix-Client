@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { DirectorView } from "../director-view/director-view";
+import { Link } from 'react-router-dom';
+
 
 import "./movie-view.scss"
 
@@ -22,12 +24,17 @@ export class MovieView extends React.Component {
                             <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
                             <Card.Text id="movie-description" className="movie-description">
                                 {movie.Description}</Card.Text>
-                            
+
+                      <Link to={`/directors/${movie.Director.Name}`}>
                             <Card.Text id="movie-director" className="movie-director">
-                                Director: {movie.Director.Name}</Card.Text>
+                            Director: {movie.Director.Name}</Card.Text>
+                        </Link>
                         
+                        
+                        <Link to={`/genres/${movie.Genre.Name}`}>
                             <Card.Text id="movie-genre" className="movie-gerne">
                                 Genre: {movie.Genre.Name}</Card.Text>
+                            </Link>
                         
 
                             
@@ -56,5 +63,5 @@ MovieView.propTypes = {
         }),
         Actors: PropTypes.array,
         ImagePath: PropTypes.string.isRequired
-    }).isRequired
+    })
 };
