@@ -15,9 +15,6 @@ import { DirectorView } from '../director-view/director-view'
 import { GenreView } from '../genre-view/genre-view'
 import { RegistrationView } from '../registration-view/registration-view'
 
-
-
-
 class MainView extends React.Component {
     constructor() {
         super();
@@ -79,10 +76,9 @@ onLoggedOut() {
         const { movies, user } = this.state;
 
         return (
-            <Router>
-              
-  
-                <Container>
+ <Router>
+      <Container>
+       {user && (     
                   <Navbar expand="lg" variant="light" bg="light" sticky="top">
             <Container>
                   <Nav.Link href="/">MY-FLIX</Nav.Link>
@@ -96,7 +92,8 @@ onLoggedOut() {
                         </Dropdown>
                  <Button  onClick={() => { this.onLoggedOut() }}>Logout</Button>
             </Container>
-      </Navbar>
+      </Navbar>)}
+      
                     <Row className="main-view justify-content-md-center">
                         <Route exact path="/" render={() => {
                             if (!user) {
@@ -120,11 +117,11 @@ onLoggedOut() {
 
                             return <LoginView onLoggedIn={(data) => this.onLoggedIn(data)} />
                         }} />
-                        <Route path="/register" render={() => {
+                        <Route path="/register" render={({match, history}) => {
                             if (!user) {
                                   return (
                                 <Col>
-                                    <RegistrationView />
+                                    <RegistrationView   user={user} onBackClick={() => history.goBack()} />
                                 </Col>
                             );
                                
@@ -148,6 +145,7 @@ onLoggedOut() {
                             return (
                                 <Col md={8}>
                                     <MovieView
+                                        username={user}
                                         movie={movies.find(m => m._id === match.params.movieId)}
                                         onBackClick={() => history.goBack()} />
                                 </Col>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import './registration-view.scss';
 import { Link } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
 
-export function RegistrationView(props) {
+export function RegistrationView( props ) {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -15,6 +15,9 @@ export function RegistrationView(props) {
     const [ usernameErr, setUsernameErr ] = useState('');
     const [ passwordErr, setPasswordErr ] = useState('');
     const [ emailErr, setEmailErr ] = useState('');
+
+
+useEffect(() =>{console.log('register' ,  this.props)})
 
     // validate user inputs
     const validate = () => {
@@ -49,12 +52,11 @@ export function RegistrationView(props) {
         e.preventDefault();
         const isReq = validate();
         if(isReq) {
-    
             axios.post('https://nameless-bayou-89739.herokuapp.com/users', {
                 userName: username,
                 Password: password,
                 Email: email,
-                Birthday: birthday,
+                BirthDay: birthday,
             })
                 .then(response => {
                     const data = response.data;
@@ -102,6 +104,8 @@ export function RegistrationView(props) {
                                     </Form.Group>
 
                                     <Button variant="outline-light" type="submit" onClick={handleSubmit}>Submit</Button>
+                                    <Button  variant="outline-light" onClick={() => { onBackClick}}>Back</Button>
+
                                 </Form>
                             </Card.Body>
                         </Card>
