@@ -38025,7 +38025,7 @@ class MovieView extends _reactDefault.default.Component {
                                         src: movie.ImagePath
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 74,
+                                        lineNumber: 68,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Title, {
@@ -38034,7 +38034,7 @@ class MovieView extends _reactDefault.default.Component {
                                         children: movie.Title
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 75,
+                                        lineNumber: 69,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Text, {
@@ -38043,7 +38043,7 @@ class MovieView extends _reactDefault.default.Component {
                                         children: movie.Description
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 76,
+                                        lineNumber: 70,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
@@ -38057,12 +38057,12 @@ class MovieView extends _reactDefault.default.Component {
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 80,
+                                            lineNumber: 73,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 79,
+                                        lineNumber: 72,
                                         columnNumber: 23
                                     }, this),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
@@ -38076,42 +38076,23 @@ class MovieView extends _reactDefault.default.Component {
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 84,
+                                            lineNumber: 77,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 83,
+                                        lineNumber: 76,
                                         columnNumber: 25
-                                    }, this),
-                                    favMovie ? /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
-                                        src: _heartEmptyPngDefault.default,
-                                        style: {
-                                            width: "50px"
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 87,
-                                        columnNumber: 32
-                                    }, this) : /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
-                                        src: _heartFilledPngDefault.default,
-                                        style: {
-                                            width: "50px"
-                                        }
-                                    }, void 0, false, {
-                                        fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 87,
-                                        columnNumber: 82
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 73,
+                                lineNumber: 67,
                                 columnNumber: 29
                             }, this)
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 72,
+                            lineNumber: 66,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
@@ -38122,7 +38103,7 @@ class MovieView extends _reactDefault.default.Component {
                             children: "Back"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 90,
+                            lineNumber: 82,
                             columnNumber: 25
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
@@ -38131,23 +38112,23 @@ class MovieView extends _reactDefault.default.Component {
                             children: "Add to favorites"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 91,
+                            lineNumber: 83,
                             columnNumber: 25
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-view/movie-view.jsx",
-                    lineNumber: 71,
+                    lineNumber: 65,
                     columnNumber: 21
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 70,
+                lineNumber: 64,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "src/components/movie-view/movie-view.jsx",
-            lineNumber: 69,
+            lineNumber: 63,
             columnNumber: 13
         }, this));
     }

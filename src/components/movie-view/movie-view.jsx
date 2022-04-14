@@ -24,10 +24,9 @@ export class MovieView extends React.Component {
     }
 
 componentDidMount(){
-   const Username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.get(`https://nameless-bayou-89739.herokuapp.com/users/${this.props.username}`, {
+const Username = localStorage.getItem('user');
+const token = localStorage.getItem('token');
+ axios.get(`https://nameless-bayou-89739.herokuapp.com/users/${this.props.username}`, {
     headers: { Authorization: `Bearer ${token}`}
   })
   .then(response => {
@@ -37,8 +36,7 @@ componentDidMount(){
       user: response.data
     });
     console.log(this.state.user, "user")
-  })
-  .catch(error =>  console.log(error));
+  }).catch(error =>  console.log(error));
 }
 
 addToFavorite= () => {
@@ -56,12 +54,8 @@ addToFavorite= () => {
             .then((response) => {
                 console.log(response);
                 alert("Movie Added");
-            })
-            .catch( error => console.log(error));
+            }).catch( error => console.log(error));
 }
-
-
-
 
 render() {
     const { username, movie, onBackClick } = this.props;
@@ -75,7 +69,6 @@ render() {
                             <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
                             <Card.Text id="movie-description" className="movie-description">
                                 {movie.Description}</Card.Text>
-
                       <Link to={`/directors/${movie.Director.Name}`}>
                             <Card.Text id="movie-director" className="movie-director">
                             Director: {movie.Director.Name}</Card.Text>
@@ -84,7 +77,6 @@ render() {
                             <Card.Text id="movie-genre" className="movie-gerne">
                                 Genre: {movie.Genre.Name}</Card.Text>
                             </Link>
-                  {favMovie ?  <img src={heartEmpty} style={{width: "50px"}}/> : <img src={heartFilled} style={{width: "50px"}}/>}
                             </Card.Body>
                         </Card>
                         <Button id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button>
