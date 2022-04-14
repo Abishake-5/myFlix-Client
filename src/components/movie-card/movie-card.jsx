@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import './movie-card.scss'
+import { Link} from 'react-router-dom'
 
 export class MovieCard extends React.Component {
     render() {
@@ -16,6 +17,9 @@ export class MovieCard extends React.Component {
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
                         <Card.Text>Director: {movie.Director.Name}</Card.Text>
+                        <Link to={`/movies/${movie._id}`}>
+                           <Button variant="link">Open</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
               </div>

@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom'
 import axios from 'axios';
+import { RegistrationView } from '../registration-view/registration-view';
 import './login-view.scss'
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+  
 const handleSubmit = (e) => {
   e.preventDefault();
   /* Send a request to the server for authentication */
@@ -23,7 +26,6 @@ const handleSubmit = (e) => {
     console.log('no such user')
   });
 };
-
   return (
     <div className='login-view'>
     <div >
@@ -43,7 +45,12 @@ const handleSubmit = (e) => {
     <Button id="login-button" variant="primary" type="submit" onClick={handleSubmit}>
       Sign In
     </Button>
-    <p className='signUP'>Need to create an account?<span><a href='#'> Sign up now</a></span></p>
+    <p className='signUP'>Need to create an account?<span>
+    </span> <Link to='/register'> Sign up now</Link> </p>
+        <Link to="/register">
+            <Button className="ml-3" variant="secondary">Register now</Button>
+        </Link>
+
     <p className='bot'>This page is protected by Google ReCAPTCHA to ensure you'r not a bot <a href='#'>Learn more</a></p>
   </Form>
     <div className='footer'><br />

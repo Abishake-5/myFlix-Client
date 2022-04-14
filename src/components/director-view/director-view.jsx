@@ -1,56 +1,51 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Card, Button, Row, Col } from "react-bootstrap";
+import {Container, Card, Button, Row} from 'react-bootstrap';
 
-import "./director-view.scss";
+export class DirectorView extends React.Component{
+    componentDidMount(){
+        console.log(this.props)
+    }
+    render(){
+        const { director, movies, onBackClick} = this.props
+        return(
+ <Container>
+        <Card.Body>
+          <Card.Title> Director</Card.Title>
+          <Card.Text>
+            <span className='label'>Name: </span>
+             <span className="value">{director.Name}</span>
+          </Card.Text>
+               <Card.Text>
+              <span className="label">Birth: </span>
+              <span className="value">{director.Birthday ? director.Birthday : "?"}</span>
+          </Card.Text>
+          <Card.Text>
+              <span className="label">Bio: </span>
+              <span className="value">{director.Bio}</span>
+          </Card.Text>
+          <Button variant="outline-dark" onClick={() => { onBackClick(); }}>Back</Button>
+        </Card.Body>
+        <Row>
+                    {movies.map(movie => (
+                        <Card className="favorite-movie card-content" key={movie._id} >
+                            <Card.Img
+                                className="director-imgs"
+                                variant="top"
+                                src={movie.ImagePath} />
+                            <Card.Body style={{ 
+                                backgroundColor: "black" ,
+                                color: "white"
+                                }}>
+                                <Card.Title className="movie_title">
+                                    {movie.Title}
+                                </Card.Title>
+                            </Card.Body>
+                        </Card>
+                    ))}
+                </Row>
+      </Container>
 
-export class DirectorView extends React.Component {
-    render() {
-        const { Director, onBackClick } = this.props;
-
-
-        return (
-            <Container>
-                <br />
-                <Card bg="secondary" text="light" border="light" align="center">
-                    
-                    <Card.Body>
-                    <Card.Title>Director</Card.Title>
-                        <div>
-                            <span className="label">Name: </span>
-                            <span className="value">{Director.Name}</span>
-                        </div>
-                        <div>
-                            <span className="label">Bio: </span>
-                            <span className="value">{Director.Bio}</span>
-                        </div>
-                        <div>
-                            <span className="label">Born: </span>
-                            <span className="value">{Director.Birthyear}</span>
-                        </div>
-                        <div>
-                            <span className="label">Death: </span>
-                            <span className="value">{Director.Deathyear}</span>
-                        </div>
-                        <br />
-                        <div className="backButton">
-                            <Button size="md" variant="light" style={{ color: "white" }} onClick={() => { onBackClick(null); }}>Back</Button>
-                        </div>
-                    </Card.Body>
-                </Card>
-            </Container>
-            
-        );
+        )
     }
 }
-
-    DirectorView.propTypes = {
-        Director: PropTypes.shape({
-            Name: PropTypes.string.isRequired,
-            Bio: PropTypes.string.isRequired,
-            Birthyear: PropTypes.string,
-            Deathyear: PropTypes.string
-          }),
-          onBackClick: PropTypes.func
-      };
