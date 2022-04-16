@@ -17,15 +17,15 @@ export class ProfileView extends React.Component{
     }
     
 componentDidMount(){
-   const accessToken = localStorage.getItem('token');
+const accessToken = localStorage.getItem('token');
   this.getUser(accessToken);
 }
+
 getUser = (token) =>{
 const Username = localStorage.getItem('user');
   axios.get(`https://nameless-bayou-89739.herokuapp.com/users/${Username}` , {
     headers: { Authorization: `Bearer ${token}` },
   }).then((res) => {
-    console.log(res)
 this.setState({
   Username: res.data.userName,
   Password: res.data.Password,
@@ -50,9 +50,7 @@ onDeleteUser() {
               localStorage.removeItem('token');
               window.open('/', '_self');
           })
-          .catch(function (error) {
-              console.log(error);
-          });
+          .catch( error => console.log(error));
   }
 
   editUser = (e) => {
@@ -73,14 +71,15 @@ onDeleteUser() {
                     headers: { Authorization: `Bearer ${token}` },
                 }
             )
-            .then((response) => {
+            .then((res) => {
                 this.setState({
-                    Username: response.data.Username,
-                    Password: response.data.Password,
-                    Email: response.data.Email,
-                    Birthday: response.data.Birthday,
+                    Username: res.data.userName,
+                    Password: res.data.Password,
+                    Email: res.data.Email,
+                    Birthday: res.data.BirthDay,
+                    FavMovies: res.data.FavMovies,
                 });
-                console.log("Updated User" , response)
+                
                 localStorage.setItem('user', this.state.Username);
                  localStorage.removeItem('user');
                 localStorage.removeItem('token');
@@ -122,7 +121,7 @@ onDeleteUser() {
 
         axios
             .delete(
-                `https://nameless-bayou-89739.herokuapp.com/users/${Username}/${movie._id}`,
+                `https://nameless-bayou-89739.herokuapp.com/users/${Username}/${this.props.movie._id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -140,7 +139,7 @@ onDeleteUser() {
  
 render(){
 const { movies, onBackClick } = this.props;
-const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
+const { FavMovies, Username, Email, Birthday, Password } = this.state;
   return(
 <>
  <Container className="profile-view" align="center">
@@ -209,14 +208,46 @@ const { FavoriteMovies, Username, Email, Birthday, Password } = this.state;
                                     <div className="mt-3">
                                         <Button variant="success" type="submit" onClick={this.editUser}>Update User</Button>
                                         <Button className="ml-3" variant="secondary" onClick={() => this.onDeleteUser()}>Delete User</Button>
+                                           {/* <Button variant="success" type="submit" onClick={onBackClick}> Back</Button> */}
+                                           
                                     </div>
                                 </Form>
                             </Card.Body>
                         </Card>
                     </Col>
                     </Row>
-                    
                     </Container>
+                    <Container>
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Fav Movies</Card.Title>
+                                {!FavMovies ?  (<div>No movies</div>) 
+                                //  If FavMovies returns a falsey value No movies is rendered 
+                                : (<div>  {FavMovies.length > 0 && movies.map((movie) => {
+                                        if (movie._id === FavMovies.find((fav) => fav === movie._id)
+                                        ) {
+                                            return (
+                                                <Card className="favorite-movie" key={movie._id} >
+                                                    <Card.Img
+                                                        className="favorite-movie-image"
+                                                        variant="top"
+                                                        src={movie.ImagePath}
+                                                        style={{width:"200px"}}
+                                                    />
+                                                    <Card.Body>
+                                                        <Card.Title className="movie-title">
+                                                            {movie.Title}
+                                                        </Card.Title>
+                                                        <Button value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove from List</Button>
+                                                    </Card.Body>
+                                                </Card>
+                                            );
+                                        }
+                                    })}</div>)}
+                            </Card.Body>
+                        </Card>
+                    </Container>
+                
 </>
     
   )
