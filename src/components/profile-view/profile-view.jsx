@@ -57,7 +57,6 @@ onDeleteUser() {
         e.preventDefault();
         const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-
         axios
             .put(
                 `https://nameless-bayou-89739.herokuapp.com/users/${Username}` ,
@@ -118,10 +117,12 @@ onDeleteUser() {
         e.preventDefault();
         const Username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-
+        console.log(this.props)
+        const movies = this.props.movies
+        console.log(movies)
         axios
             .delete(
-                `https://nameless-bayou-89739.herokuapp.com/users/${Username}/${this.props.movie._id}`,
+                `https://nameless-bayou-89739.herokuapp.com/users/${Username}/${movie._id}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -221,7 +222,7 @@ const { FavMovies, Username, Email, Birthday, Password } = this.state;
                         <Card>
                             <Card.Body>
                                 <Card.Title>Fav Movies</Card.Title>
-                                {!FavMovies ?  (<div>No movies</div>) 
+                                {!FavMovies ? (<div>No movies</div>) 
                                 //  If FavMovies returns a falsey value No movies is rendered 
                                 : (<div>  {FavMovies.length > 0 && movies.map((movie) => {
                                         if (movie._id === FavMovies.find((fav) => fav === movie._id)

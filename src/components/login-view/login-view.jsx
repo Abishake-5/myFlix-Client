@@ -27,7 +27,7 @@ const handleSubmit = (e) => {
   });
 };
   return (
-    <div className='login-view'>
+    <div className='login-view' >
     <div >
       <h1 className="logo">MY-FLIX</h1>
     </div>
