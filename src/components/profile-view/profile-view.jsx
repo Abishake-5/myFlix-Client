@@ -8,10 +8,10 @@ export class ProfileView extends React.Component{
  constructor() {
         super();
         this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthday: null,
+            Username: '',
+            Password: '',
+            Email: '',
+            Birthday: '',
             FavMovies: [],
         };
     }
@@ -140,7 +140,7 @@ onDeleteUser() {
  
 render(){
 const { movies, onBackClick } = this.props;
-const { FavMovies, Username, Email, Birthday, Password } = this.state;
+const { FavMovies, Username, Email ,Password, Birthday } = this.state;
   return(
 <>
  <Container className="profile-view" align="center">
@@ -229,17 +229,18 @@ const { FavMovies, Username, Email, Birthday, Password } = this.state;
                                         ) {
                                             return (
                                                 <Card className="favorite-movie" key={movie._id} >
-                                                    <Card.Img
-                                                        className="favorite-movie-image"
-                                                        variant="top"
-                                                        src={movie.ImagePath}
-                                                        style={{width:"200px"}}
-                                                    />
                                                     <Card.Body>
-                                                        <Card.Title className="movie-title">
-                                                            {movie.Title}
-                                                        </Card.Title>
-                                                        <Button value={movie._id} onClick={(e) => this.onRemoveFavorite(e, movie)}>Remove from List</Button>
+                                                        <Card.Img
+                                                            className="favorite-movie-image"
+                                                            variant="top"
+                                                            src={movie.ImagePath}
+                                                            style={{width:"100%"}}
+                                                        />
+                                                        <Card.Title className="movie-title">{movie.Title}</Card.Title>
+                                                        <Button value={movie._id}
+                                                         onClick={(e) => this.onRemoveFavorite(e, movie)}
+                                                         >Remove from List</Button>
+
                                                     </Card.Body>
                                                 </Card>
                                             );

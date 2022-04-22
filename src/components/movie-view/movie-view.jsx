@@ -17,7 +17,6 @@ export class MovieView extends React.Component {
         }
     }
 
-
 flip = ()=>{
 const FavMovie = this.state.FavMovie
 this.setState({
